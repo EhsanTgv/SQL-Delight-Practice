@@ -1,7 +1,11 @@
 plugins {
+    id("com.google.devtools.ksp")
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    kotlin("kapt")
+    id("com.squareup.sqldelight")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -56,4 +60,15 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //Dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.38.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.37")
+    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    ksp("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-beta01")
+
+    // SQL Delight
+    implementation("com.squareup.sqldelight:android-driver:1.5.2")
+    implementation("com.squareup.sqldelight:coroutines-extensions-jvm:1.5.2")
 }
